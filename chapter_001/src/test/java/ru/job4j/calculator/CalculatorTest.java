@@ -2,9 +2,8 @@ package ru.job4j.calculator;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 
 public class CalculatorTest {
 
@@ -20,7 +19,7 @@ public class CalculatorTest {
         calc.add(1L, 1L);
         double result = calc.getResult();
         double expected = 2L;
-        assertThat(result, is(expected));
+        Assert.assertThat(result, Matchers.is(expected));
     }
 
     @Test
@@ -28,7 +27,7 @@ public class CalculatorTest {
         calc.subtract(5L, 10L);
         double result = calc.getResult();
         double expected = -5L;
-        assertThat(result, is(expected));
+        Assert.assertThat(result, Matchers.is(expected));
     }
 
     @Test
@@ -36,7 +35,7 @@ public class CalculatorTest {
         calc.div(5L, 10L);
         double result = calc.getResult();
         double expected = 0.5;
-        assertThat(result, is(expected));
+        Assert.assertThat(result, Matchers.is(expected));
     }
 
     @Test
@@ -44,7 +43,7 @@ public class CalculatorTest {
         calc.multiply(2L, 2L);
         double result = calc.getResult();
         double expected = 4L;
-        assertThat(result, is(expected));
+        Assert.assertThat(result, Matchers.is(expected));
     }
 
 }
