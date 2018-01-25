@@ -7,7 +7,7 @@ package ru.job4j.max;
  */
 public class Max {
     /**
-     * Возвращает максимальное значение
+     * Возвращает максимальное значение из двух операндов
      *
      * @param first  - целое число int
      * @param second - целое число int
@@ -15,5 +15,17 @@ public class Max {
      */
     public int getMax(int first, int second) {
         return first > second ? first : second;
+    }
+
+    /**
+     * Возвращает максимальное значение из трех операндов
+     *
+     * @param first  - целое число int
+     * @param second - целое число int
+     * @param third  - целое число int
+     * @return максимальное их двух параметров
+     */
+    public int getMaxFromThree(int first, int second, int third) {
+        return getMax(first, getMax(second, third));
     }
 }
