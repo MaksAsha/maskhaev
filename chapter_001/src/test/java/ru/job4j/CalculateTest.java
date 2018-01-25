@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 public class CalculateTest {
 
 /**
-*Тест
+*РўРµСЃС‚
 */
 @Test
 public void whenTakeNameThenThreeEchoPlusName() {
