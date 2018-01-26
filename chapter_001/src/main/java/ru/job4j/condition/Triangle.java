@@ -47,11 +47,6 @@ public class Triangle {
      * @return является ли треугольник вырожденным
      */
     private boolean isTriangle(double a, double b, double c) {
-        boolean result = false;
-        if ((a < b + c) && (b < a + c) && (c < a + b)) {
-            result = true;
-        }
-
-        return result;
+        return ((a < b + c) && (b < a + c) && (c < a + b));
     }
 }
