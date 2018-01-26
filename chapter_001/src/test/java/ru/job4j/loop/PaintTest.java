@@ -37,4 +37,24 @@ public class PaintTest {
                 .toString();
         Assert.assertThat(result, Matchers.is(expected));
     }
+
+    @Test
+    public void testPyramidLeftSideForHeightFour() throws Exception {
+        String result = paint.leftTrl(2);
+        String expected = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add(" ^")
+                .add("^^")
+                .toString();
+        Assert.assertThat(result, Matchers.is(expected));
+    }
+
+    @Test
+    public void testPyramidRightSideForHeightFour() throws Exception {
+        String result = paint.rightTrl(2);
+        String expected = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("^ ")
+                .add("^^")
+                .toString();
+        Assert.assertThat(result, Matchers.is(expected));
+    }
 }
