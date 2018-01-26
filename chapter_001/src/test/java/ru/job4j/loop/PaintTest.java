@@ -39,7 +39,7 @@ public class PaintTest {
     }
 
     @Test
-    public void testPyramidLeftSideForHeightFour() throws Exception {
+    public void testPyramidLeftSideForHeightTwo() throws Exception {
         String result = paint.leftTrl(2);
         String expected = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add(" ^")
@@ -49,7 +49,7 @@ public class PaintTest {
     }
 
     @Test
-    public void testPyramidRightSideForHeightFour() throws Exception {
+    public void testPyramidRightSideForHeightTwo() throws Exception {
         String result = paint.rightTrl(2);
         String expected = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                 .add("^ ")
