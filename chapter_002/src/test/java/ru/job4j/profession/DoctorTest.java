@@ -17,6 +17,7 @@ public class DoctorTest {
         patient = new Person("Leonid");
         expected = new Diagnose("Hospital MedClinic, Allergolog Maksim inspected" +
                 " patient Leonid and found out Allergy diagnose");
+        String ss = expected.toString();
     }
 
     @Test

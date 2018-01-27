@@ -18,4 +18,6 @@ public class Doctor extends Profession {
     public String getHospital() {
         return hospital;
     }
+
+
 }
