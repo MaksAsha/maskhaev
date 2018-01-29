@@ -9,7 +9,7 @@ public class Tracker {
     private int position;
     private static final Random RN = new Random();
 
-    String generateId() {
+    private String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
     }
 
@@ -61,7 +61,7 @@ public class Tracker {
 
     public void replace(String id, Item item) {
         for (int i = 0; i < items.length; i++) {
-            if ((items[i] != null) && (items[i].getId().equals(id))) {
+            if ((items[i]!=null)&&(items[i].getId().equals(id))) {
                 item.setId(this.generateId());
                 items[i] = item;
                 break;
@@ -71,18 +71,19 @@ public class Tracker {
 
     public void delete(String id) {
         Item[] result = null;
-        if ((items != null) && (id != null)) {
+        if (id != null) {
             for (int i = 0; i < items.length; i++) {
                 if (items[i] == null) break;
                 else if (items[i].getId().equals(id)) {
-                    result = new Item[items.length - 1];
+                    result = new Item[items.length];
                     if (i == 0) {
-                        System.arraycopy(items, 1, result, 0, items.length - 1);
+                        System.arraycopy(items, 1, result, 0, items.length);
                     }
                     if (i > 0) {
                         System.arraycopy(items, 0, result, 0, i);
-                        System.arraycopy(items, i + 1, result, i, position - i - 1);
+                        System.arraycopy(items, i + 1, result, i, position - i);
                     }
+                    position--;
                     break;
                 }
             }
@@ -94,12 +95,10 @@ public class Tracker {
 
     public Item[] findAll() {
         Item[] result = null;
-        if (items != null) {
-            for (int i = 0; i < items.length; i++) {
-                if (items[i] == null) {
-                    result = Arrays.copyOf(this.items, i);
-                    break;
-                }
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] == null) {
+                result = Arrays.copyOf(this.items, i);
+                break;
             }
         }
         return result;
