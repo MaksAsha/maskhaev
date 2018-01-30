@@ -16,8 +16,9 @@ public class Tracker {
     protected Item findById(String id) {
         Item result = null;
         for (Item item : items) {
-            if (item == null) break;
-            else if (item.getId().equals(id)) {
+            if (item == null) {
+                break;
+            } else if (item.getId().equals(id)) {
                 result = item;
                 break;
             }
@@ -29,8 +30,9 @@ public class Tracker {
         Item[] result = null;
         int k = 0;
         for (Item item : items) {
-            if (item == null) break;
-            else if (item.getName().equals(key)) {
+            if (item == null) {
+                break;
+            } else if (item.getName().equals(key)) {
                 k++;
             }
         }
@@ -39,8 +41,9 @@ public class Tracker {
             result = new Item[k];
             k = 0;
             for (Item item : items) {
-                if (item == null) break;
-                else if (item.getName().equals(key)) {
+                if (item == null) {
+                    break;
+                } else if (item.getName().equals(key)) {
                     result[k] = item;
                     k++;
                 }
@@ -61,7 +64,7 @@ public class Tracker {
 
     public void replace(String id, Item item) {
         for (int i = 0; i < items.length; i++) {
-            if ((items[i]!=null)&&(items[i].getId().equals(id))) {
+            if ((items[i] != null) && (items[i].getId().equals(id))) {
                 item.setId(this.generateId());
                 items[i] = item;
                 break;
@@ -73,8 +76,9 @@ public class Tracker {
         Item[] result = null;
         if (id != null) {
             for (int i = 0; i < items.length; i++) {
-                if (items[i] == null) break;
-                else if (items[i].getId().equals(id)) {
+                if (items[i] == null) {
+                    break;
+                } else if (items[i].getId().equals(id)) {
                     result = new Item[items.length];
                     if (i == 0) {
                         System.arraycopy(items, 1, result, 0, items.length);
