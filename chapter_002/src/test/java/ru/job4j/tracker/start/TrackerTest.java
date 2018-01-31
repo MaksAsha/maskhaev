@@ -107,8 +107,10 @@ public class TrackerTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testAddIfItemsIndexExceedNotNull() throws Exception {
-        for (int i = 0; i < 100; i++) tracker.add(item1);
-        tracker.add(item1);//adding 101th item
+        for (int i = 0; i < 100; i++) {
+            tracker.add(item1);
+        }
+        tracker.add(item1);
     }
 
     @Test

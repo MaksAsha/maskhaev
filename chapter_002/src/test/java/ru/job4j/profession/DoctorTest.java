@@ -15,8 +15,8 @@ public class DoctorTest {
     public void setUp() {
         doctor = new Doctor("Maksim", "Allergolog", "MedClinic");
         patient = new Person("Leonid");
-        expected = new Diagnose("Hospital MedClinic, Allergolog Maksim inspected" +
-                " patient Leonid and found out Allergy diagnose");
+        expected = new Diagnose("Hospital MedClinic, Allergolog Maksim inspected"
+                + " patient Leonid and found out Allergy diagnose");
     }
 
     @Test

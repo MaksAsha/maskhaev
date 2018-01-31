@@ -16,8 +16,12 @@ public class Diagnose {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Diagnose)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Diagnose)) {
+            return false;
+        }
 
         Diagnose diagnose1 = (Diagnose) o;
 

@@ -31,9 +31,9 @@ public class StartUI {
                 String taskdescr = input.ask("Введите описание задачи:");
                 if (!taskname.equals("")) {
                     System.out.println(
-                            "Задача:" +
-                                    tracker.add(new Item(taskname, taskdescr, System.currentTimeMillis())) +
-                                    " добавлена"
+                            "Задача:"
+                                    + tracker.add(new Item(taskname, taskdescr, System.currentTimeMillis()))
+                                    + " добавлена"
                     );
                 }
             } else if (REPLACE.equals(command)) {

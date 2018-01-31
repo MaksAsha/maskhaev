@@ -5,9 +5,9 @@ public class Doctor extends Profession {
     private String hospital;
 
     public Diagnose doWork(Person person) {
-        return new Diagnose("Hospital " + getHospital() + ", " + getProfession() + " " +
-                getPersonName() + " inspected patient " + person.getPersonName()+
-                " and found out Allergy diagnose");
+        return new Diagnose("Hospital " + getHospital() + ", " + getProfession() + " "
+                + getPersonName() + " inspected patient " + person.getPersonName()
+                + " and found out Allergy diagnose");
     }
 
     public Doctor(String personName, String profession, String hospital) {

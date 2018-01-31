@@ -55,7 +55,9 @@ public class Tracker {
     }
 
     public Item add(Item item) {
-        if (position > 99) throw new IndexOutOfBoundsException();
+        if (position > 99) {
+            throw new IndexOutOfBoundsException();
+        }
 
         if (item != null) {
             item.setId(this.generateId());
