@@ -2,8 +2,6 @@ package ru.job4j.tracker.start;
 
 import ru.job4j.tracker.models.Item;
 
-import java.util.Date;
-
 public class StartUI {
     private static final String ADD = "1";
     private static final String REPLACE = "2";
