@@ -13,7 +13,7 @@ public class ArrayConcatTest {
 
     @Before
     public void setUp() {
-        data = new ArrayConcat();
+        data = new ArrayConcat(1);
 
     }
 
@@ -27,9 +27,11 @@ public class ArrayConcatTest {
         Assert.assertThat(actual, Matchers.is(expected));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testConcatAndSortWhenBothArgAreNull() throws Exception {
         int[] actual = data.concatAndSort(arr1, arr2);
+        int[] expected = null;
+        Assert.assertThat(actual, Matchers.is(expected));
     }
 
     @Test

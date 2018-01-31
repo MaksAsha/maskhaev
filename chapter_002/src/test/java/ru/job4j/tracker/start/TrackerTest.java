@@ -1,13 +1,10 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.start;
 
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.regex.Matcher;
-
-import static org.junit.Assert.*;
+import ru.job4j.tracker.models.Item;
 
 public class TrackerTest {
 
