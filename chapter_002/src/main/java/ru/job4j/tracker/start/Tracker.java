@@ -83,11 +83,11 @@ public class Tracker {
                 } else if (items[i].getId().equals(id)) {
                     result = new Item[items.length];
                     if (i == 0) {
-                        System.arraycopy(items, 1, result, 0, items.length);
+                        System.arraycopy(items, 1, result, 0, items.length - 1);
                     }
                     if (i > 0) {
                         System.arraycopy(items, 0, result, 0, i);
-                        System.arraycopy(items, i + 1, result, i, position - i);
+                        System.arraycopy(items, i + 1, result, i, items.length - 1 - i);
                     }
                     position--;
                     break;
