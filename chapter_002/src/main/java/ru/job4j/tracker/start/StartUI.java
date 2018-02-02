@@ -1,8 +1,7 @@
 package ru.job4j.tracker.start;
 
-import ru.job4j.tracker.models.Item;
-
 public class StartUI {
+
     private final Input input;
     private final Tracker tracker;
 
@@ -18,13 +17,13 @@ public class StartUI {
         int key;
         do {
             menuTracker.show();
-            key = Integer.valueOf(input.ask("Select:"));
+            key = Integer.valueOf(input.ask("Select:", MenuEnum.getMenuItems()));
             menuTracker.select(key);
-        } while (key!=7);
+        } while (key != MenuEnum.getOrderValue(MenuEnum.EXIT));
 
     }
 
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }

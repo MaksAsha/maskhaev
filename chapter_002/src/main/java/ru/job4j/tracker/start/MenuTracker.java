@@ -4,11 +4,9 @@ import ru.job4j.tracker.models.Item;
 
 class ReplaceItem implements UserAction {
 
-    private static final int REPLACE = 2;
-
     @Override
     public int key() {
-        return REPLACE;
+        return MenuEnum.getOrderValue(MenuEnum.REPLACE);
     }
 
     @Override
@@ -27,11 +25,9 @@ class ReplaceItem implements UserAction {
 
 class FindByName implements UserAction {
 
-    private static final int FIND_BY_NAME = 6;
-
     @Override
     public int key() {
-        return FIND_BY_NAME;
+        return MenuEnum.getOrderValue(MenuEnum.FIND_BY_NAME);
     }
 
     @Override
@@ -51,12 +47,6 @@ class FindByName implements UserAction {
 
 
 public class MenuTracker {
-
-    private static final int ADD = 1;
-    private static final int DELETE = 3;
-    private static final int SHOW = 4;
-    private static final int FIND_BY_ID = 5;
-    private static final int EXIT = 7;
 
     private Tracker tracker;
     private Input input;
@@ -93,7 +83,7 @@ public class MenuTracker {
 
         @Override
         public int key() {
-            return ADD;
+            return MenuEnum.getOrderValue(MenuEnum.ADD);
         }
 
         @Override
@@ -113,7 +103,7 @@ public class MenuTracker {
 
         @Override
         public int key() {
-            return DELETE;
+            return MenuEnum.getOrderValue(MenuEnum.DELETE);
         }
 
         @Override
@@ -132,7 +122,7 @@ public class MenuTracker {
 
         @Override
         public int key() {
-            return SHOW;
+            return MenuEnum.getOrderValue(MenuEnum.SHOW);
         }
 
         @Override
@@ -152,7 +142,7 @@ public class MenuTracker {
 
         @Override
         public int key() {
-            return FIND_BY_ID;
+            return MenuEnum.getOrderValue(MenuEnum.FIND_BY_ID);
         }
 
         @Override
@@ -171,7 +161,7 @@ public class MenuTracker {
 
         @Override
         public int key() {
-            return EXIT;
+            return MenuEnum.getOrderValue(MenuEnum.EXIT);
         }
 
         @Override
