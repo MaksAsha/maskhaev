@@ -20,10 +20,9 @@ public class StartUI {
             key = Integer.valueOf(input.ask("Select:", MenuEnum.getMenuItems()));
             menuTracker.select(key);
         } while (key != MenuEnum.getOrderValue(MenuEnum.EXIT));
-
     }
 
     public static void main(String[] args) {
-        new StartUI(new ValidateInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }

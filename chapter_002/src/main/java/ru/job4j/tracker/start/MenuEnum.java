@@ -9,8 +9,6 @@ public enum MenuEnum {
     FIND_BY_NAME,
     EXIT;
 
-    private int[] range = new int[]{1, 2, 3, 4, 5, 6, 7};
-
     public static int getOrderValue(MenuEnum itemEnum) {
         return itemEnum.ordinal() + 1;
     }
