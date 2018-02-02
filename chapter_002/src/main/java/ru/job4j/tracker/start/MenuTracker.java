@@ -2,11 +2,10 @@ package ru.job4j.tracker.start;
 
 import ru.job4j.tracker.models.Item;
 
-class ReplaceItem implements UserAction {
+class ReplaceItem extends BaseAction {
 
-    @Override
-    public int key() {
-        return MenuEnum.getOrderValue(MenuEnum.REPLACE);
+    public ReplaceItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -16,18 +15,12 @@ class ReplaceItem implements UserAction {
         String desc = input.ask("Введите описание задачи:");
         tracker.replace(id, new Item(name, desc, 1L));
     }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s ", this.key(), "Edit item");
-    }
 }
 
-class FindByName implements UserAction {
+class FindByName extends BaseAction {
 
-    @Override
-    public int key() {
-        return MenuEnum.getOrderValue(MenuEnum.FIND_BY_NAME);
+    public FindByName(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -38,13 +31,7 @@ class FindByName implements UserAction {
             System.out.println(item);
         }
     }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s ", this.key(), "Find item by name");
-    }
 }
-
 
 public class MenuTracker {
 
@@ -58,13 +45,13 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions[0] = new AddItem();
-        this.actions[1] = new ReplaceItem();
-        this.actions[2] = new DeleteItem();
-        this.actions[3] = new ShowItems();
-        this.actions[4] = new FindById();
-        this.actions[5] = new FindByName();
-        this.actions[6] = new Exit();
+        this.actions[0] = new AddItem(MenuEnum.getOrderValue(MenuEnum.ADD), "Add a new item");
+        this.actions[1] = new ReplaceItem(MenuEnum.getOrderValue(MenuEnum.REPLACE), "Replace item");
+        this.actions[2] = new DeleteItem(MenuEnum.getOrderValue(MenuEnum.DELETE), "Delete item");
+        this.actions[3] = new ShowItems(MenuEnum.getOrderValue(MenuEnum.SHOW), "Show all items");
+        this.actions[4] = new FindById(MenuEnum.getOrderValue(MenuEnum.FIND_BY_ID), "Find item by id");
+        this.actions[5] = new FindByName(MenuEnum.getOrderValue(MenuEnum.FIND_BY_NAME), "Find item by name");
+        this.actions[6] = new Exit(MenuEnum.getOrderValue(MenuEnum.EXIT), "Exit");
     }
 
     public void select(int key) {
@@ -79,11 +66,10 @@ public class MenuTracker {
         }
     }
 
-    private class AddItem implements UserAction {
+    private class AddItem extends BaseAction {
 
-        @Override
-        public int key() {
-            return MenuEnum.getOrderValue(MenuEnum.ADD);
+        public AddItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -92,18 +78,12 @@ public class MenuTracker {
             String desc = input.ask("Введите описание задачи:");
             tracker.add(new Item(name, desc, 1L));
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s ", this.key(), "Add a new item");
-        }
     }
 
-    private class DeleteItem implements UserAction {
+    private class DeleteItem extends BaseAction {
 
-        @Override
-        public int key() {
-            return MenuEnum.getOrderValue(MenuEnum.DELETE);
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -111,18 +91,12 @@ public class MenuTracker {
             String id = input.ask("Введите id задачи, которую необходимо удалить:");
             tracker.delete(id);
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s ", this.key(), "Delete item");
-        }
     }
 
-    private static class ShowItems implements UserAction {
+    private static class ShowItems extends BaseAction {
 
-        @Override
-        public int key() {
-            return MenuEnum.getOrderValue(MenuEnum.SHOW);
+        public ShowItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -131,18 +105,12 @@ public class MenuTracker {
                 System.out.println(item);
             }
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s ", this.key(), "Show all items");
-        }
     }
 
-    private static class FindById implements UserAction {
+    private static class FindById extends BaseAction {
 
-        @Override
-        public int key() {
-            return MenuEnum.getOrderValue(MenuEnum.FIND_BY_ID);
+        public FindById(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -150,30 +118,17 @@ public class MenuTracker {
             String id = input.ask("Введите id задачи, которую необходимо найти:");
             System.out.println(tracker.findById(id));
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s ", this.key(), "Find item by id");
-        }
     }
 
-    private static class Exit implements UserAction {
+    private static class Exit extends BaseAction {
 
-        @Override
-        public int key() {
-            return MenuEnum.getOrderValue(MenuEnum.EXIT);
+        public Exit(int key, String name) {
+            super(key, name);
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
         }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s ", this.key(), "Exit");
-        }
     }
-
-
 }
 
