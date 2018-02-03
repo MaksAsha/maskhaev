@@ -39,7 +39,7 @@ public class Board {
             OccupiedMoveException,
             FigureNotFoundException {
 
-        if (source.getX() < 1 || source.getX() > BOARD_SIZE || dest.getX() < 1 || dest.getY() > BOARD_SIZE)
+        if (source.getX() < 1 || source.getX() > BOARD_SIZE || dest.getY() < 1 || dest.getY() > BOARD_SIZE)
             throw new ImpossibleMoveException("Out of board");
 
         Figure figure = null;
