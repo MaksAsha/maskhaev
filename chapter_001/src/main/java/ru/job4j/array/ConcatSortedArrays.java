@@ -22,22 +22,18 @@ public class ConcatSortedArrays {
             int i = 0;
             int j = 0;
             while (k < length) {
-                if (i < arr1.length && j < arr2.length) {
-                    if (arr1[i] < arr2[j]) {
-                        out[k++] = arr1[i++];
-                    } else if (arr1[i] == arr2[j]) {
-                        out[k++] = arr1[i++];
-                        out[k++] = arr2[j++];
-                    } else if (arr1[i] > arr2[j]) {
-                        out[k++] = arr2[j++];
-                    }
+                if(i==arr1.length){
+                    out[k] = arr2[j++];
+                } else if (j==arr2.length){
+                    out[k] = arr1[i++];
                 } else {
-                    if (i >= arr1.length) {
-                        out[k++] = arr2[j++];
-                    } else if (j >= arr2.length) {
-                        out[k++] = arr1[i++];
+                    if(arr1[i]>arr2[j]){
+                        out[k] = arr2[j++];
+                    } else {
+                        out[k] = arr1[i++];
                     }
                 }
+                k++;
             }
         }
         return out;
