@@ -6,6 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.models.Item;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TrackerTest {
 
     Tracker tracker;
@@ -57,8 +61,8 @@ public class TrackerTest {
         tracker.add(item4);
         tracker.add(item41);
 
-        Item[] actual = tracker.findByName("Item4");
-        Item[] expected = new Item[]{item4, item41};
+        List<Item> actual = tracker.findByName("Item4");
+        List<Item> expected = Arrays.asList(item4, item41);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -69,8 +73,8 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
 
-        Item[] actual = tracker.findByName("Item4");
-        Item[] expected = null;
+        List<Item> actual = tracker.findByName("Item4");
+        List<Item> expected = new ArrayList<>();
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -81,8 +85,8 @@ public class TrackerTest {
         tracker.add(item2);
         tracker.add(item3);
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{item1, item2, item3};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item2, item3);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -90,8 +94,8 @@ public class TrackerTest {
     @Test
     public void testFindAllIfItemsNotExists() throws Exception {
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = new ArrayList<>();
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -103,14 +107,6 @@ public class TrackerTest {
         Item expected = item1;
 
         Assert.assertThat(actual, Matchers.is(expected));
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void testAddIfItemsIndexExceedNotNull() throws Exception {
-        for (int i = 0; i < 100; i++) {
-            tracker.add(item1);
-        }
-        tracker.add(item1);
     }
 
     @Test
@@ -127,8 +123,8 @@ public class TrackerTest {
     public void testReplaceIfIdExists() throws Exception {
         initTestReplace(item2, item4);
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{item1, item4, item3};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item4, item3);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -137,8 +133,8 @@ public class TrackerTest {
     public void testReplaceIfIdNotExists() throws Exception {
         initTestReplace(item4, item41);
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{item1, item2, item3};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item2, item3);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -147,8 +143,8 @@ public class TrackerTest {
     public void testDeleteIfIdExists() throws Exception {
         initTestDelete(item2);
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{item1, item3};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item3);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
@@ -157,8 +153,8 @@ public class TrackerTest {
     public void testDeleteIfIdIsNull() throws Exception {
         initTestDelete(item4);
 
-        Item[] actual = tracker.findAll();
-        Item[] expected = new Item[]{item1, item2, item3};
+        List<Item> actual = tracker.findAll();
+        List<Item> expected = Arrays.asList(item1, item2, item3);
 
         Assert.assertThat(actual, Matchers.is(expected));
     }
