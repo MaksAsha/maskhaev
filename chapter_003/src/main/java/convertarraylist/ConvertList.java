@@ -1,7 +1,6 @@
 package convertarraylist;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ConvertList {
@@ -31,16 +30,17 @@ public class ConvertList {
         return array;
     }
 
-    public static void main(String[] args) {
-        ConvertList convertList = new ConvertList();
-        int[][] arr;
+    public final List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
 
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
-        arr = convertList.toArray(list, 3);
-
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++) {
-                System.out.println(arr[i][j]);
+        for (int[] arr : list) {
+            for (int i : arr) {
+                result.add(i);
             }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
     }
 }

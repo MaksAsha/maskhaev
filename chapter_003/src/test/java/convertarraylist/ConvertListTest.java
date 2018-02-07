@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,4 +41,16 @@ public class ConvertListTest {
         int[][] actual = convertList.toArray(list, 3);
         Assert.assertThat(actual, Matchers.is(expected));
     }
+
+    @Test
+    public void testConvert() throws Exception {
+        List<int[]> list = new ArrayList<>();
+        list.add(new int[]{1,2,3,4,5});
+        list.add(new int[]{6,7,8,9});
+        List<Integer> expected = Arrays.asList(1,2,3,4,5,6,7,8,9);
+        List<Integer> actual = convertList.convert(list);
+
+        Assert.assertThat(actual, Matchers.is(expected));
+    }
+
 }
