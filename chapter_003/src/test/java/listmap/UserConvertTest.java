@@ -18,37 +18,37 @@ import static org.junit.Assert.*;
 public class UserConvertTest {
 
     UserConvert userConvert;
-    User user1, user2;
+    User user1, user2, user3;
     List<User> list;
 
-    @Before
-    public void setUp() {
+    @Test
+    public void testProcess() throws Exception {
         userConvert = new UserConvert();
 
         user1 = new User(1, "User1", "Moscow");
         user2 = new User(2, "User2", "Bryansk");
+        user3 = new User(3, "", "");
         list = new ArrayList<>();
+
+        HashMap<Integer, User> expected = new HashMap<>();
         list.add(user1);
         list.add(user2);
-    }
-
-    @Test
-    public void testProcess() throws Exception {
-        HashMap<Integer, User> expected = new HashMap<>();
         expected.put(user1.getId(), user1);
         expected.put(user2.getId(), user2);
 
         HashMap<Integer, User> actual = userConvert.process(list);
+
         Assert.assertThat(actual, Matchers.is(expected));
     }
 
-    /*
     @Test
-    public void testProcessEx() throws Exception {
-        HashMap<Integer, User> expected = (HashMap<Integer, User>) Arrays.asList(user1, user2)
-                .stream().collect(Collectors.toMap(User::getId, user->user));
+    public void testProcessWhenListIsEmpty() throws Exception {
+        userConvert = new UserConvert();
+        HashMap<Integer, User> expected = new HashMap<>();
+        list = new ArrayList<>();
 
-        HashMap<Integer, User> actual = userConvert.processEx(list);
+        HashMap<Integer, User> actual = userConvert.process(list);
+
         Assert.assertThat(actual, Matchers.is(expected));
-    }*/
+    }
 }
