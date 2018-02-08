@@ -3,12 +3,11 @@ package ru.job4j.chess.figures;
 import ru.job4j.chess.models.Cell;
 import ru.job4j.chess.models.Figure;
 import ru.job4j.chess.exceptions.ImpossibleMoveException;
-import ru.job4j.chess.models.FigureEnum;
 
 public class Bishop extends Figure {
 
-    public Bishop(FigureEnum figure, Cell cell) {
-        super(figure, cell);
+    public Bishop(Cell cell) {
+        super(cell);
     }
 
     @Override
@@ -31,7 +30,7 @@ public class Bishop extends Figure {
     }
 
     @Override
-    public Figure copy(FigureEnum figure, Cell dest) {
-        return new Bishop(figure, dest);
+    public Figure copy(Cell dest) {
+        return new Bishop(dest);
     }
 }

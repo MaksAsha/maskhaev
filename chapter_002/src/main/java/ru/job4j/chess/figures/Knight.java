@@ -3,12 +3,11 @@ package ru.job4j.chess.figures;
 import ru.job4j.chess.models.Cell;
 import ru.job4j.chess.models.Figure;
 import ru.job4j.chess.exceptions.ImpossibleMoveException;
-import ru.job4j.chess.models.FigureEnum;
 
 public class Knight extends Figure {
 
-    public Knight(FigureEnum figure, Cell cell) {
-        super(figure, cell);
+    public Knight(Cell cell) {
+        super(cell);
     }
 
     @Override
@@ -17,7 +16,7 @@ public class Knight extends Figure {
     }
 
     @Override
-    public Figure copy(FigureEnum figure, Cell dest) {
-        return new Knight(figure, dest);
+    public Figure copy(Cell dest) {
+        return new Knight(dest);
     }
 }

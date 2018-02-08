@@ -6,7 +6,6 @@ import ru.job4j.chess.exceptions.OccupiedMoveException;
 import ru.job4j.chess.figures.*;
 import ru.job4j.chess.models.Cell;
 import ru.job4j.chess.models.Figure;
-import ru.job4j.chess.models.FigureEnum;
 
 public class Board {
 
@@ -15,24 +14,20 @@ public class Board {
     private Figure[] figures = new Figure[FIGURE_COUNT];
     private int liveFigure = 0;
 
-    public Board() {
-    }
-
-    //добавляем фигуру в случайную позицию
     public void addFigure(Figure figure) {
         figures[liveFigure++] = figure;
     }
 
     public void createAndPlaceFiguresToInitialPosition() {
-        for (int i = 0; i < 8; i++) addFigure(new Pawn(FigureEnum.PAWN, new Cell(i, 3)));
-        addFigure(new Rook(FigureEnum.ROOK, new Cell(0, 0)));
-        addFigure(new Rook(FigureEnum.ROOK, new Cell(7, 0)));
-        addFigure(new Knight(FigureEnum.KNIGHT, new Cell(1, 0)));
-        addFigure(new Knight(FigureEnum.KNIGHT, new Cell(6, 0)));
-        addFigure(new Bishop(FigureEnum.BISHOP, new Cell(2, 0)));
-        addFigure(new Bishop(FigureEnum.BISHOP, new Cell(5, 0)));
-        addFigure(new Queen(FigureEnum.QUEEN, new Cell(3, 0)));
-        addFigure(new King(FigureEnum.KING, new Cell(4, 0)));
+        for (int i = 0; i < 8; i++) addFigure(new Pawn(new Cell(i, 3)));
+        addFigure(new Rook(new Cell(0, 0)));
+        addFigure(new Rook(new Cell(7, 0)));
+        addFigure(new Knight(new Cell(1, 0)));
+        addFigure(new Knight(new Cell(6, 0)));
+        addFigure(new Bishop(new Cell(2, 0)));
+        addFigure(new Bishop(new Cell(5, 0)));
+        addFigure(new Queen(new Cell(3, 0)));
+        addFigure(new King(new Cell(4, 0)));
     }
 
     public boolean move(Cell source, Cell dest) throws ImpossibleMoveException,
@@ -46,7 +41,6 @@ public class Board {
         Cell[] cells;
         int index = 0;
 
-        //есть ли фигура в указанной ячейке
         boolean bfind = false;
         for (int i = 0; i < liveFigure; i++) {
             if (figures[i].isInCell(source.getX(), source.getY())) {
@@ -56,15 +50,11 @@ public class Board {
                 break;
             }
         }
-        //фигура не найдена, бросаем исключение
         if (!bfind) throw new FigureNotFoundException("Figure not found");
 
-        //определяем, может ли фигура ходить в этом направлении
-        //если ход запрещен, то данный метод бросает нам исключение ImpossibleMoveException
         cells = figure.way(source, dest);
 
-        //определяем, есть ли на пути другие фигуры, кроме Коня
-        if (figure.getFigure() != FigureEnum.KNIGHT) {
+        if (figure instanceof Bishop) {
             bfind = false;
             for (int i = 0; i < liveFigure; i++) {
                 for (Cell cell : cells) {
@@ -76,9 +66,7 @@ public class Board {
             }
             if (bfind) throw new OccupiedMoveException("Pass is busy");
         }
-        //если все шаги прошли успешно, возвращаем положительный результат,
-        //что фигура может быть установлена в указанное место
-        figures[index] = figure.copy(figure.getFigure(), dest);
+        figures[index] = figure.copy(dest);
         return true;
     }
 
@@ -98,8 +86,6 @@ public class Board {
             if (board.move(new Cell(3, 1), new Cell(2, 0))) {
                 System.out.println("Фигура установлена на новую позицию 2!");
             }
-
-
         }
     }
 }

@@ -3,12 +3,11 @@ package ru.job4j.chess.figures;
 import ru.job4j.chess.models.Cell;
 import ru.job4j.chess.models.Figure;
 import ru.job4j.chess.exceptions.ImpossibleMoveException;
-import ru.job4j.chess.models.FigureEnum;
 
 public class Pawn extends Figure{
 
-    public Pawn(FigureEnum figure, Cell cell) {
-        super(figure, cell);
+    public Pawn(Cell cell) {
+        super(cell);
     }
 
     @Override
@@ -17,7 +16,7 @@ public class Pawn extends Figure{
     }
 
     @Override
-    public Figure copy(FigureEnum figure, Cell dest) {
-        return new Pawn(figure, dest);
+    public Figure copy(Cell dest) {
+        return new Pawn(dest);
     }
 }
