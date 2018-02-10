@@ -11,9 +11,9 @@ public class SortUser {
         return users;
     }
 
-    public List<User> sortNameLength (List<User> users){
-        class UserComparator implements Comparator<User>{
-            public int compare(User a, User b){
+    public List<User> sortNameLength(List<User> users) {
+        class UserComparator implements Comparator<User> {
+            public int compare(User a, User b) {
                 return a.getName().length() - b.getName().length();
             }
         }
@@ -23,11 +23,11 @@ public class SortUser {
         return users;
     }
 
-    public List<User> sortByAllFields (List<User> users){
-        class UserComparator implements Comparator<User>{
-            public int compare(User a, User b){
+    public List<User> sortByAllFields(List<User> users) {
+        class UserComparator implements Comparator<User> {
+            public int compare(User a, User b) {
                 int res = a.getName().compareTo(b.getName());
-                return  res!= 0 ? res : a.getAge() - b.getAge();
+                return res != 0 ? res : a.getAge() - b.getAge();
             }
         }
         Comparator comparator = new UserComparator();
