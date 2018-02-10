@@ -3,6 +3,20 @@ package comparable;
 import java.util.*;
 
 public class SortUser {
+
+    class UserComparator implements Comparator<User> {
+        public int compare(User a, User b) {
+            return a.getName().length() - b.getName().length();
+        }
+    }
+
+    class UserComparatorEx implements Comparator<User> {
+        public int compare(User a, User b) {
+            int res = a.getName().compareTo(b.getName());
+            return res != 0 ? res : a.getAge() - b.getAge();
+        }
+    }
+
     public Set<User> sort(List<User> list) {
         Set<User> users = new TreeSet<>();
         for (User user : list) {
@@ -12,11 +26,6 @@ public class SortUser {
     }
 
     public List<User> sortNameLength(List<User> users) {
-        class UserComparator implements Comparator<User> {
-            public int compare(User a, User b) {
-                return a.getName().length() - b.getName().length();
-            }
-        }
         Comparator comparator = new UserComparator();
         Collections.sort(users, comparator);
 
@@ -24,13 +33,7 @@ public class SortUser {
     }
 
     public List<User> sortByAllFields(List<User> users) {
-        class UserComparator implements Comparator<User> {
-            public int compare(User a, User b) {
-                int res = a.getName().compareTo(b.getName());
-                return res != 0 ? res : a.getAge() - b.getAge();
-            }
-        }
-        Comparator comparator = new UserComparator();
+        Comparator comparator = new UserComparatorEx();
         Collections.sort(users, comparator);
 
         return users;
