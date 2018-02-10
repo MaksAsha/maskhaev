@@ -19,7 +19,9 @@ public class Board {
     }
 
     public void createAndPlaceFiguresToInitialPosition() {
-        for (int i = 0; i < 8; i++) addFigure(new Pawn(new Cell(i, 3)));
+        for (int i = 0; i < 8; i++) {
+            addFigure(new Pawn(new Cell(i, 3)));
+        }
         addFigure(new Rook(new Cell(0, 0)));
         addFigure(new Rook(new Cell(7, 0)));
         addFigure(new Knight(new Cell(1, 0)));
@@ -34,8 +36,9 @@ public class Board {
             OccupiedMoveException,
             FigureNotFoundException {
 
-        if (source.getX() < 1 || source.getX() > BOARD_SIZE || dest.getY() < 1 || dest.getY() > BOARD_SIZE)
+        if (source.getX() < 1 || source.getX() > BOARD_SIZE || dest.getY() < 1 || dest.getY() > BOARD_SIZE) {
             throw new ImpossibleMoveException("Out of board");
+        }
 
         Figure figure = null;
         Cell[] cells;
@@ -50,7 +53,9 @@ public class Board {
                 break;
             }
         }
-        if (!bfind) throw new FigureNotFoundException("Figure not found");
+        if (!bfind) {
+            throw new FigureNotFoundException("Figure not found");
+        }
 
         cells = figure.way(source, dest);
 
@@ -64,7 +69,9 @@ public class Board {
                     }
                 }
             }
-            if (bfind) throw new OccupiedMoveException("Pass is busy");
+            if (bfind) {
+                throw new OccupiedMoveException("Pass is busy");
+            }
         }
         figures[index] = figure.copy(dest);
         return true;
